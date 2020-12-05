@@ -1309,3 +1309,374 @@ Processing by Api::V1::CoursesController#index as */*
 Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.5ms | Allocations: 1393)
 
 
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:01:50 -0500
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 23ms (Views: 11.5ms | ActiveRecord: 1.7ms | Allocations: 9034)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:03:34 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.7ms | Allocations: 1393)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:04:13 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 38ms (Views: 25.4ms | ActiveRecord: 6.4ms | Allocations: 8323)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:04:25 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.0ms | Allocations: 1330)
+
+
+  
+NoMethodError (undefined method `pry' for #<Binding:0x00007f895c19f978>
+Did you mean?  try):
+  
+app/models/api/v1/course.rb:4:in `<class:Course>'
+app/models/api/v1/course.rb:1:in `<main>'
+app/controllers/api/v1/courses_controller.rb:4:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:04:36 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ app/models/api/v1/course.rb:5:in `<class:Course>'
+Completed 500 Internal Server Error in 507740ms (ActiveRecord: 2.3ms | Allocations: 90348)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `<class:Course>'
+app/models/api/v1/course.rb:5:in `<class:Course>'
+app/models/api/v1/course.rb:1:in `<main>'
+app/controllers/api/v1/courses_controller.rb:4:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:13:05 -0500
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 249ms (Views: 174.1ms | ActiveRecord: 14.9ms | Allocations: 1328477)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:13:18 -0500
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 48ms (Views: 32.4ms | ActiveRecord: 4.2ms | Allocations: 9039)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:13:32 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (5.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 77ms (Views: 43.7ms | ActiveRecord: 11.3ms | Allocations: 8390)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:14:56 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:15:39 -0500
+Completed 500 Internal Server Error in 42236ms (ActiveRecord: 2.1ms | Allocations: 180794)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `index'
+app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 2525ms (ActiveRecord: 31.3ms | Allocations: 10062375)
+
+
+  
+NameError (undefined local variable or method `rating' for #<Api::V1::CoursesController:0x00007f662c1390b8>
+Did you mean?  Rational):
+  
+app/controllers/api/v1/courses_controller.rb:6:in `block in index'
+app/controllers/api/v1/courses_controller.rb:5:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:16:42 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 36786)
+
+
+  
+SyntaxError (/mnt/c/Users/dstem/Frisbee_Golf_App/frisbee_golf_api/app/models/api/v1/course.rb:4: syntax error, unexpected self, expecting ')'
+    def rating(self)
+               ^~~~
+/mnt/c/Users/dstem/Frisbee_Golf_App/frisbee_golf_api/app/models/api/v1/course.rb:11: syntax error, unexpected end, expecting end-of-input):
+  
+app/models/api/v1/course.rb:4: syntax error, unexpected self, expecting ')'
+app/models/api/v1/course.rb:11: syntax error, unexpected end, expecting end-of-input
+app/models/api/v1/course.rb:4: syntax error, unexpected self, expecting ')'
+app/models/api/v1/course.rb:11: syntax error, unexpected end, expecting end-of-input
+app/controllers/api/v1/courses_controller.rb:4:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:16:53 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 1364ms (ActiveRecord: 24.3ms | Allocations: 10253938)
+
+
+  
+NoMethodError (undefined method `rating' for #<Api::V1::CoursesController:0x00007f6628ce3bd8>
+Did you mean?  Rational):
+  
+app/controllers/api/v1/courses_controller.rb:6:in `block in index'
+app/controllers/api/v1/courses_controller.rb:5:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:20:33 -0500
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 1309ms (ActiveRecord: 24.2ms | Allocations: 10551587)
+
+
+  
+NoMethodError (undefined method `rating' for #<Api::V1::Course:0x00007fffe7c6de48>):
+  
+app/controllers/api/v1/courses_controller.rb:6:in `block in index'
+app/controllers/api/v1/courses_controller.rb:5:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:20:50 -0500
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 29136ms (Views: 43.3ms | ActiveRecord: 15.5ms | Allocations: 2385720)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `dispatch'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:21:42 -0500
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (7.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 357ms (Views: 36.6ms | ActiveRecord: 30.5ms | Allocations: 2379849)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:22:29 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (5.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 29267ms (ActiveRecord: 27.1ms | Allocations: 2076596)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `index'
+app/controllers/api/v1/courses_controller.rb:9:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:23:01 -0500
+  [1m[35m (5.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 9549ms (ActiveRecord: 28.3ms | Allocations: 2877374)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `index'
+app/controllers/api/v1/courses_controller.rb:9:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:23:34 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (6.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 23095ms (ActiveRecord: 32.4ms | Allocations: 2875021)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `index'
+app/controllers/api/v1/courses_controller.rb:9:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:24:01 -0500
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (8.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 8094ms (ActiveRecord: 32.4ms | Allocations: 2072570)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `index'
+app/controllers/api/v1/courses_controller.rb:9:in `index'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:24:22 -0500
+  [1m[35m (5.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 377ms (Views: 40.2ms | ActiveRecord: 20.1ms | Allocations: 2392006)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:24:39 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (5.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 178ms (Views: 85.4ms | ActiveRecord: 5.2ms | Allocations: 589740)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:25:14 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (5.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 393ms (Views: 41.7ms | ActiveRecord: 26.5ms | Allocations: 2403429)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:36:43 -0500
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 333ms (Views: 45.6ms | ActiveRecord: 2.5ms | Allocations: 2154075)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:54:32 -0500
+  [1m[35m (5.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.9ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 133ms (Views: 62.0ms | ActiveRecord: 2.9ms | Allocations: 606974)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:54:49 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (14.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 194ms (Views: 89.3ms | ActiveRecord: 14.4ms | Allocations: 600774)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:56:12 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 126ms (Views: 72.3ms | ActiveRecord: 2.5ms | Allocations: 600776)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:57:47 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (10.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 115ms (Views: 57.5ms | ActiveRecord: 10.8ms | Allocations: 600774)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:58:34 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (4.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 107ms (Views: 50.8ms | ActiveRecord: 4.1ms | Allocations: 600774)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:58:41 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (7.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 121ms (Views: 64.1ms | ActiveRecord: 7.6ms | Allocations: 600774)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 10:58:52 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 124ms (Views: 58.3ms | ActiveRecord: 2.5ms | Allocations: 600776)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 11:00:08 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (6.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 158ms (Views: 69.4ms | ActiveRecord: 6.1ms | Allocations: 600774)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 11:04:25 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (12.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 175ms (Views: 68.9ms | ActiveRecord: 12.8ms | Allocations: 600774)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 11:04:37 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 123ms (Views: 60.6ms | ActiveRecord: 1.8ms | Allocations: 600774)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 11:06:07 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 138ms (Views: 71.1ms | ActiveRecord: 2.1ms | Allocations: 600776)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 11:06:48 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 353ms (Views: 222.0ms | ActiveRecord: 3.6ms | Allocations: 600914)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 11:07:27 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 140ms (Views: 67.1ms | ActiveRecord: 3.3ms | Allocations: 600776)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 11:08:52 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (14.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 159ms (Views: 75.9ms | ActiveRecord: 14.3ms | Allocations: 600774)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 11:09:02 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 122ms (Views: 55.2ms | ActiveRecord: 2.0ms | Allocations: 600776)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 11:10:02 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (6.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 151ms (Views: 68.0ms | ActiveRecord: 6.8ms | Allocations: 600774)
+
+
