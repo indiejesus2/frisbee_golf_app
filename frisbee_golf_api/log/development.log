@@ -2203,3 +2203,902 @@ SystemExit (exit):
 (byebug):1:in `exit'
 (byebug):1:in `update'
 app/controllers/api/v1/courses_controller.rb:17:in `update'
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "api_v1_comments"[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "api_v1_comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "review" varchar, "api_v1_course_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE  INDEX "index_api_v1_comments_on_api_v1_course_id" ON "api_v1_comments" ("api_v1_course_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "api_v1_courses"[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "api_v1_courses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "city" varchar, "state" varchar, "holes" integer, "votes" integer, "tally" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aapi_v1_comments" ("id" integer NOT NULL PRIMARY KEY, "username" varchar DEFAULT NULL, "review" varchar DEFAULT NULL, "api_v1_course_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_aapi_v1_comments_on_api_v1_course_id" ON "aapi_v1_comments" ("api_v1_course_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aapi_v1_comments" ("id","username","review","api_v1_course_id","created_at","updated_at")
+                     SELECT "id","username","review","api_v1_course_id","created_at","updated_at" FROM "api_v1_comments"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE "api_v1_comments"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "api_v1_comments" ("id" integer NOT NULL PRIMARY KEY, "username" varchar DEFAULT NULL, "review" varchar DEFAULT NULL, "api_v1_course_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3bad9197bd"
+FOREIGN KEY ("api_v1_course_id")
+  REFERENCES "api_v1_courses" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_api_v1_comments_on_api_v1_course_id" ON "api_v1_comments" ("api_v1_course_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("id","username","review","api_v1_course_id","created_at","updated_at")
+                     SELECT "id","username","review","api_v1_course_id","created_at","updated_at" FROM "aapi_v1_comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aapi_v1_comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (8.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20201203235709)[0m
+  [1m[35m (8.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20201201230628);
+
+[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-12-05 18:42:16.932283"], ["updated_at", "2020-12-05 18:42:16.932283"]]
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "3d0a79e02e64c7c172fabc807dc5e36f44fedc51"], ["created_at", "2020-12-05 18:42:16.952247"], ["updated_at", "2020-12-05 18:42:16.952247"]]
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "api_v1_comments"[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "api_v1_comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "review" varchar, "api_v1_course_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE  INDEX "index_api_v1_comments_on_api_v1_course_id" ON "api_v1_comments" ("api_v1_course_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "api_v1_courses"[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "api_v1_courses" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "city" varchar, "state" varchar, "holes" integer, "votes" integer, "tally" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aapi_v1_comments" ("id" integer NOT NULL PRIMARY KEY, "username" varchar DEFAULT NULL, "review" varchar DEFAULT NULL, "api_v1_course_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aapi_v1_comments_on_api_v1_course_id" ON "aapi_v1_comments" ("api_v1_course_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aapi_v1_comments" ("id","username","review","api_v1_course_id","created_at","updated_at")
+                     SELECT "id","username","review","api_v1_course_id","created_at","updated_at" FROM "api_v1_comments"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "api_v1_comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "api_v1_comments" ("id" integer NOT NULL PRIMARY KEY, "username" varchar DEFAULT NULL, "review" varchar DEFAULT NULL, "api_v1_course_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_3bad9197bd"
+FOREIGN KEY ("api_v1_course_id")
+  REFERENCES "api_v1_courses" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_api_v1_comments_on_api_v1_course_id" ON "api_v1_comments" ("api_v1_course_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("id","username","review","api_v1_course_id","created_at","updated_at")
+                     SELECT "id","username","review","api_v1_course_id","created_at","updated_at" FROM "aapi_v1_comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aapi_v1_comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (7.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (8.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20201203235709)[0m
+  [1m[35m (8.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20201201230628);
+
+[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-12-05 18:42:17.090401"], ["updated_at", "2020-12-05 18:42:17.090401"]]
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (1.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-12-05 18:42:17.107982"], ["key", "environment"]]
+  [1m[35m (7.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "3d0a79e02e64c7c172fabc807dc5e36f44fedc51"], ["created_at", "2020-12-05 18:42:17.128094"], ["updated_at", "2020-12-05 18:42:17.128094"]]
+  [1m[35m (7.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mApi::V1::Course Create (1.4ms)[0m  [1m[32mINSERT INTO "api_v1_courses" ("name", "city", "state", "holes", "votes", "tally", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Alycon Woods"], ["city", "Pitman"], ["state", "NJ"], ["holes", 18], ["votes", 0], ["tally", 0], ["created_at", "2020-12-05 18:42:17.218817"], ["updated_at", "2020-12-05 18:42:17.218817"]]
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mApi::V1::Course Create (2.2ms)[0m  [1m[32mINSERT INTO "api_v1_courses" ("name", "city", "state", "holes", "votes", "tally", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Alexandria Township Park"], ["city", "Milford"], ["state", "NJ"], ["holes", 18], ["votes", 0], ["tally", 0], ["created_at", "2020-12-05 18:42:17.235408"], ["updated_at", "2020-12-05 18:42:17.235408"]]
+  [1m[35m (9.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mApi::V1::Course Create (1.5ms)[0m  [1m[32mINSERT INTO "api_v1_courses" ("name", "city", "state", "holes", "votes", "tally", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Allaire State Park"], ["city", "Wall Township"], ["state", "NJ"], ["holes", 18], ["votes", 0], ["tally", 0], ["created_at", "2020-12-05 18:42:17.253752"], ["updated_at", "2020-12-05 18:42:17.253752"]]
+  [1m[35m (8.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mApi::V1::Course Create (1.4ms)[0m  [1m[32mINSERT INTO "api_v1_courses" ("name", "city", "state", "holes", "votes", "tally", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Browns Point/Buzzy's Creek"], ["city", "West Milford"], ["state", "NJ"], ["holes", 18], ["votes", 0], ["tally", 0], ["created_at", "2020-12-05 18:42:17.270363"], ["updated_at", "2020-12-05 18:42:17.270363"]]
+  [1m[35m (9.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:42:46 -0500
+  [1m[35m (12.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 34ms (Views: 20.1ms | ActiveRecord: 4.0ms | Allocations: 9034)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:42:51 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (0.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+Completed 400 Bad Request in 18528ms (ActiveRecord: 0.6ms | Allocations: 55841)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `rescue in instrument'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:43:17 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 220ms (Views: 161.5ms | ActiveRecord: 18.2ms | Allocations: 1483515)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:43:23 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (3.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+Completed 400 Bad Request in 53ms (ActiveRecord: 3.8ms | Allocations: 231374)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: course):
+  
+app/controllers/api/v1/courses_controller.rb:21:in `course_params'
+app/controllers/api/v1/courses_controller.rb:14:in `update'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:43:49 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 292ms (Views: 222.5ms | ActiveRecord: 19.1ms | Allocations: 1947300)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:43:58 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+Completed 400 Bad Request in 78ms (ActiveRecord: 2.8ms | Allocations: 295142)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: course):
+  
+app/controllers/api/v1/courses_controller.rb:20:in `course_params'
+app/controllers/api/v1/courses_controller.rb:14:in `update'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:44:17 -0500
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (7.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 301ms (Views: 228.7ms | ActiveRecord: 21.3ms | Allocations: 2101039)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:44:26 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (5.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+Completed 500 Internal Server Error in 35710ms (ActiveRecord: 5.0ms | Allocations: 306346)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `course_params'
+app/controllers/api/v1/courses_controller.rb:21:in `course_params'
+app/controllers/api/v1/courses_controller.rb:14:in `update'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:45:02 -0500
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (4.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 403ms (Views: 300.7ms | ActiveRecord: 35.3ms | Allocations: 2101059)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:45:11 -0500
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 302ms (Views: 231.5ms | ActiveRecord: 18.1ms | Allocations: 2103343)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:45:18 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+Completed 500 Internal Server Error in 354ms (ActiveRecord: 2.7ms | Allocations: 2345456)
+
+
+  
+NoMethodError (undefined method `permit' for 5:Integer):
+  
+app/controllers/api/v1/courses_controller.rb:20:in `course_params'
+app/controllers/api/v1/courses_controller.rb:14:in `update'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:45:29 -0500
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 342ms (Views: 263.2ms | ActiveRecord: 22.0ms | Allocations: 2095151)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:45:37 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+Completed 500 Internal Server Error in 357ms (ActiveRecord: 2.4ms | Allocations: 2337112)
+
+
+  
+NoMethodError (undefined method `permit' for 5:Integer):
+  
+app/controllers/api/v1/courses_controller.rb:20:in `course_params'
+app/controllers/api/v1/courses_controller.rb:14:in `update'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:45:59 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 331ms (Views: 256.1ms | ActiveRecord: 21.4ms | Allocations: 2101042)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:46:07 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (9.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+Completed 500 Internal Server Error in 39962ms (ActiveRecord: 9.3ms | Allocations: 301510)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `course_params'
+app/controllers/api/v1/courses_controller.rb:21:in `course_params'
+app/controllers/api/v1/courses_controller.rb:14:in `update'
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:46:48 -0500
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 329ms (Views: 252.9ms | ActiveRecord: 16.0ms | Allocations: 2096398)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:46:56 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (1.9ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (6.2ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 1], ["votes", 5], ["updated_at", "2020-12-05 18:46:59.157868"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (30.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 204 No Content in 419ms (ActiveRecord: 57.3ms | Allocations: 2250608)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:47:39 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 136ms (Views: 129.4ms | ActiveRecord: 3.2ms | Allocations: 537231)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:47:50 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (3.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (11.3ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 2], ["votes", 10], ["updated_at", "2020-12-05 18:47:50.309375"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 204 No Content in 250ms (ActiveRecord: 28.2ms | Allocations: 1161294)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:50:17 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (14.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 155ms (Views: 123.0ms | ActiveRecord: 14.1ms | Allocations: 529761)
+
+
+Started PATCH "/api/v1/courses/2" for ::1 at 2020-12-05 13:50:34 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"2", "course"=>{}}
+  [1m[36mApi::V1::Course Load (3.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (4.0ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 1], ["votes", 5], ["updated_at", "2020-12-05 18:50:35.114315"], ["id", 2]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (14.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 204 No Content in 275ms (ActiveRecord: 22.1ms | Allocations: 1189902)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:51:23 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (4.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 185ms (Views: 168.5ms | ActiveRecord: 4.2ms | Allocations: 529763)
+
+
+Started PATCH "/api/v1/courses/2" for ::1 at 2020-12-05 13:51:29 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"2", "course"=>{}}
+  [1m[36mApi::V1::Course Load (9.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (5.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (13.0ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 2], ["votes", 10], ["updated_at", "2020-12-05 18:51:29.599849"], ["id", 2]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 204 No Content in 262ms (ActiveRecord: 41.6ms | Allocations: 1053991)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:52:08 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 351ms (Views: 256.8ms | ActiveRecord: 29.2ms | Allocations: 2101042)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:52:38 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (15.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 200ms (Views: 170.0ms | ActiveRecord: 15.7ms | Allocations: 529761)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:52:43 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (4.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (1.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (9.8ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 3], ["votes", 15], ["updated_at", "2020-12-05 18:52:43.791006"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (12.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 500 Internal Server Error in 39777ms (ActiveRecord: 28.2ms | Allocations: 1318950)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `update'
+app/controllers/api/v1/courses_controller.rb:16:in `update'
+Started GET "/api/v1/courses/1" for ::1 at 2020-12-05 13:53:34 -0500
+Processing by Api::V1::CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 29889)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:53:45 -0500
+Processing by Api::V1::CoursesController#index as HTML
+  [1m[36mApi::V1::Course Load (5.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 90ms (Views: 73.5ms | ActiveRecord: 5.2ms | Allocations: 529475)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-12-05 13:53:46 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/courses/1" for ::1 at 2020-12-05 13:53:51 -0500
+Processing by Api::V1::CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 204 No Content in 7ms (ActiveRecord: 0.0ms | Allocations: 29893)
+
+
+Started GET "/api/v1/course/1" for ::1 at 2020-12-05 13:54:02 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/course/1"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/courses/id/1" for ::1 at 2020-12-05 13:54:18 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/courses/id/1"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/courses/1" for ::1 at 2020-12-05 13:54:32 -0500
+Processing by Api::V1::CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 204 No Content in 4ms (ActiveRecord: 0.0ms | Allocations: 29889)
+
+
+Started GET "/api/v1/courses/id/1" for ::1 at 2020-12-05 13:54:37 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/courses/id/1"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/courses/1" for ::1 at 2020-12-05 13:54:41 -0500
+Processing by Api::V1::CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 204 No Content in 6ms (ActiveRecord: 0.0ms | Allocations: 29889)
+
+
+Started GET "/api/v1/courses/1" for ::1 at 2020-12-05 13:54:48 -0500
+Processing by Api::V1::CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 204 No Content in 3ms (ActiveRecord: 0.0ms | Allocations: 29889)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:55:38 -0500
+  [1m[35m (5.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/mnt/c/Users/dstem/Frisbee_Golf_App/frisbee_golf_api/app/controllers/api/v1/courses_controller.rb:10: syntax error, unexpected end
+    end
+    ^~~
+/mnt/c/Users/dstem/Frisbee_Golf_App/frisbee_golf_api/app/controllers/api/v1/courses_controller.rb:26: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/courses_controller.rb:10: syntax error, unexpected end
+app/controllers/api/v1/courses_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/courses_controller.rb:10: syntax error, unexpected end
+app/controllers/api/v1/courses_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:56:11 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 348ms (Views: 252.2ms | ActiveRecord: 26.2ms | Allocations: 2101145)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:56:53 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (11.9ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 146ms (Views: 126.6ms | ActiveRecord: 11.9ms | Allocations: 529763)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:57:57 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 200ms (Views: 175.8ms | ActiveRecord: 3.0ms | Allocations: 529763)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:58:08 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (13.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 151ms (Views: 131.7ms | ActiveRecord: 13.2ms | Allocations: 529763)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:58:16 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 144ms (Views: 131.7ms | ActiveRecord: 1.7ms | Allocations: 532009)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:58:31 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (14.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 146ms (Views: 127.6ms | ActiveRecord: 14.2ms | Allocations: 529763)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:59:16 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 282ms (Views: 181.7ms | ActiveRecord: 2.1ms | Allocations: 532063)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 13:59:35 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (4.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 329ms (Views: 301.6ms | ActiveRecord: 4.0ms | Allocations: 532004)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 13:59:50 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>3, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (11.9ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 4], ["votes", 18], ["updated_at", "2020-12-05 18:59:50.750388"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (12.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 292ms (Views: 10.4ms | ActiveRecord: 27.3ms | Allocations: 1290868)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:02:57 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (9.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 118ms (Views: 92.0ms | ActiveRecord: 9.4ms | Allocations: 529761)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 14:03:03 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>2, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (8.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (4.1ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 5], ["votes", 20], ["updated_at", "2020-12-05 19:03:03.542020"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (15.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 215ms (Views: 15.8ms | ActiveRecord: 28.1ms | Allocations: 1131040)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:03:55 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (5.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 166ms (Views: 148.9ms | ActiveRecord: 5.8ms | Allocations: 529763)
+
+
+Started PATCH "/api/v1/courses/3" for ::1 at 2020-12-05 14:04:03 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>3, "id"=>"3", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (4.8ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 1], ["votes", 3], ["updated_at", "2020-12-05 19:04:03.471890"], ["id", 3]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (13.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 238ms (Views: 14.8ms | ActiveRecord: 21.8ms | Allocations: 1171469)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:04:45 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 140ms (Views: 131.4ms | ActiveRecord: 3.3ms | Allocations: 529763)
+
+
+Started PATCH "/api/v1/courses/3" for ::1 at 2020-12-05 14:04:51 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"3", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (12.2ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 2], ["votes", 8], ["updated_at", "2020-12-05 19:04:52.058618"], ["id", 3]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 215ms (Views: 14.5ms | ActiveRecord: 27.3ms | Allocations: 1131232)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:05:18 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 161ms (Views: 153.0ms | ActiveRecord: 2.4ms | Allocations: 529763)
+
+
+Started PATCH "/api/v1/courses/3" for ::1 at 2020-12-05 14:05:23 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"3", "course"=>{}}
+  [1m[36mApi::V1::Course Load (1.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (3.7ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 3], ["votes", 13], ["updated_at", "2020-12-05 19:05:23.644162"], ["id", 3]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 228ms (Views: 14.8ms | ActiveRecord: 16.7ms | Allocations: 1242057)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:06:36 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 168ms (Views: 153.8ms | ActiveRecord: 3.5ms | Allocations: 529761)
+
+
+Started PATCH "/api/v1/courses/4" for ::1 at 2020-12-05 14:06:47 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>4, "id"=>"4", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (10.9ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 1], ["votes", 4], ["updated_at", "2020-12-05 19:06:47.337525"], ["id", 4]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 204ms (Views: 12.7ms | ActiveRecord: 26.7ms | Allocations: 1181894)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:07:00 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (12.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 187ms (Views: 159.0ms | ActiveRecord: 12.4ms | Allocations: 529761)
+
+
+Started PATCH "/api/v1/courses/4" for ::1 at 2020-12-05 14:07:06 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"4", "course"=>{}}
+  [1m[36mApi::V1::Course Load (9.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (4.0ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 2], ["votes", 9], ["updated_at", "2020-12-05 19:07:06.959266"], ["id", 4]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 223ms (Views: 13.6ms | ActiveRecord: 25.6ms | Allocations: 1181351)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:08:12 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (16.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 191ms (Views: 157.3ms | ActiveRecord: 16.0ms | Allocations: 529761)
+
+
+Started PATCH "/api/v1/courses/2" for ::1 at 2020-12-05 14:08:18 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>1, "id"=>"2", "course"=>{}}
+  [1m[36mApi::V1::Course Load (1.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (8.8ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 3], ["votes", 11], ["updated_at", "2020-12-05 19:08:18.738786"], ["id", 2]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 216ms (Views: 12.1ms | ActiveRecord: 23.9ms | Allocations: 1183043)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:08:38 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (4.9ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 166ms (Views: 154.9ms | ActiveRecord: 4.9ms | Allocations: 532063)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 14:08:57 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>3, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (1.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.7ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (4.9ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 6], ["votes", 23], ["updated_at", "2020-12-05 19:08:57.661506"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (13.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 235ms (Views: 13.5ms | ActiveRecord: 20.9ms | Allocations: 1184815)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:11:26 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 257ms (Views: 212.1ms | ActiveRecord: 3.5ms | Allocations: 529763)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 14:11:31 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>4, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (3.3ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 7], ["votes", 27], ["updated_at", "2020-12-05 19:11:31.406821"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (13.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 231ms (Views: 12.2ms | ActiveRecord: 20.1ms | Allocations: 1181697)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:12:10 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (15.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 172ms (Views: 137.2ms | ActiveRecord: 15.5ms | Allocations: 529761)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 14:12:13 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>2, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (4.8ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 8], ["votes", 29], ["updated_at", "2020-12-05 19:12:13.682981"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (13.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 238ms (Views: 11.3ms | ActiveRecord: 21.6ms | Allocations: 1183542)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:14:26 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (2.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 186ms (Views: 172.6ms | ActiveRecord: 2.6ms | Allocations: 529763)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 14:14:32 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (4.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (4.7ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 9], ["votes", 34], ["updated_at", "2020-12-05 19:14:32.255499"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (14.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 266ms (Views: 13.7ms | ActiveRecord: 24.5ms | Allocations: 1184205)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:14:43 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (6.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 212ms (Views: 158.7ms | ActiveRecord: 6.1ms | Allocations: 529761)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 14:14:48 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>4, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (2.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (0.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (3.9ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 10], ["votes", 38], ["updated_at", "2020-12-05 19:14:48.107387"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 241ms (Views: 12.4ms | ActiveRecord: 20.6ms | Allocations: 1184122)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-05 14:16:16 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (24.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+Completed 200 OK in 237ms (Views: 188.8ms | ActiveRecord: 24.3ms | Allocations: 529763)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-05 14:16:20 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (1.9ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:12:in `update'
+  [1m[35m (1.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[36mApi::V1::Course Update (4.3ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 11], ["votes", 43], ["updated_at", "2020-12-05 19:16:20.657920"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+  [1m[35m (13.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:14:in `update'
+Completed 200 OK in 217ms (Views: 9.8ms | ActiveRecord: 21.2ms | Allocations: 1130912)
+
+
