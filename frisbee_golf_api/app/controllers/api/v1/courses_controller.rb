@@ -1,8 +1,9 @@
 class Api::V1::CoursesController < ApplicationController
 
     def index
-        @courses = Api::V1::Course.all
-        render json: CourseSerializer.new(@courses)
+        courses = Api::V1::Course.all
+        # render json: courses, except: [:created_at, :updated_at]
+        render json: CourseSerializer.new(courses)
     end
 
     def show
