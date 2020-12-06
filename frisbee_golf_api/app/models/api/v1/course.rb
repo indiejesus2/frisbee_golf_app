@@ -1,20 +1,3 @@
 class Api::V1::Course < ApplicationRecord
-    has_many :api_v1_comments
-
-    def zero
-        if self.votes == nil
-            self.votes = 0
-            self.tally = 0
-        end
-    end
-
-    # def rating
-    #     debugger
-    #     if self.votes != 0 && self.tally != 0
-    #         self.votes % self.tally
-    #     else
-    #         0
-    #     end
-    # end
-
+    has_many :comments, foreign_key: "api_v1_course_id"
 end

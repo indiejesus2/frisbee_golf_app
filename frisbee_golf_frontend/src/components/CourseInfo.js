@@ -9,8 +9,8 @@ class CourseInfo {
 
     static getAll() {
         api.getAllCourses().then((data) => 
-        data.forEach(course => new CourseInfo(course))
-        )
+            data.forEach(course => new CourseInfo(course))
+        );
     }
 
     attachEventListener() {
@@ -20,11 +20,27 @@ class CourseInfo {
     handleOnClick = (e) => {
         if (e.target.className == "rate-btn") {
             if (e.target.previousElementSibling.value >= 1) {
-                this.course.votes += 1
-                this.course.tally += (parseInt(e.target.previousElementSibling.value))
-                debugger
+                const id = this.card.dataset.id;
+                let vote = (parseInt(e.target.previousElementSibling.value))
+                api.updateRating(id, vote).then((course) => this.updatedRating(course.tally, course.votes))
             }
         }
+    }
+
+    calculateRating = (tally, votes) => {
+        let rating = 0
+        if (tally == 0 && votes == 0) {
+            return rating
+            // return rating
+        } else {
+            let rating = (votes/tally)
+            return rating
+        }
+    }
+
+    updatedRating = (tally, votes) => {
+        const rating = (votes/tally)
+        this.card.children[1].innerHTML = `${rating} Frisbees`;
     }
     
     renderCourse() {
@@ -37,10 +53,10 @@ class CourseInfo {
     }
 
     renderInnerHTML() {
-        const { name, city, state, holes, tally } = this.course;
+        const { name, city, state, holes, votes, tally } = this.course;
         this.card.innerHTML = `
         <h2>${name}</h2>
-        <h5>${tally} Frisbees</h5>
+        <h5>${this.calculateRating(tally, votes)} Frisbees</h5>
         <h4>${city}, ${state}</h4>
         <ul>
             <li>${holes} Holes (Baskets) </li>

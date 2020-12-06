@@ -15,11 +15,4 @@ class Api::V1::CoursesController < ApplicationController
         render json: @course, except: [:created_at, :updated_at]
     end
 
-    private
-
-    def course_params
-        
-    end
-
-
 end
