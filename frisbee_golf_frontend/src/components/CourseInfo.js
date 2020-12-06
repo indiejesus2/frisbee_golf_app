@@ -8,8 +8,11 @@ class CourseInfo {
     }
 
     static getAll() {
-        api.getAllCourses().then((data) => 
-            data.forEach(course => new CourseInfo(course))
+        api.getAllCourses().then((data) => {
+            let newdata = data.data
+            newdata.forEach(course => new CourseInfo(course))
+        }
+            
         );
     }
 
@@ -49,18 +52,28 @@ class CourseInfo {
         card.dataset.id = this.course.id
         this.card = card
         this.renderInnerHTML();
+        this.renderComments();
         this.constructor.container.append(card);
     }
 
+    renderComments() {
+        const comments = this.course.attributes.comments.map(comment => comment)
+        var ul = document.createElement('ul')
+        comments.forEach(comment => {
+            var li = document.createElement('li')
+            li.innerText = `"${comment.review}" - ${comment.username}`
+            ul.appendChild(li)
+        }) 
+        this.card.append(ul)
+    }
+
     renderInnerHTML() {
-        const { name, city, state, holes, votes, tally } = this.course;
+        const { name, city, state, holes, votes, tally } = this.course.attributes;
         this.card.innerHTML = `
-        <h2>${name}</h2>
-        <h5>${this.calculateRating(tally, votes)} Frisbees</h5>
+        <h2>${name}</h2> 
         <h4>${city}, ${state}</h4>
-        <ul>
-            <li>${holes} Holes (Baskets) </li>
-        </ul>
+        ${holes} Holes (Baskets)
+        <h5>${this.calculateRating(tally, votes)} Frisbees</h5>
         <label for="rating">Rate This Course</label>
         <select>
             <option disabled selected value>--</option>
@@ -70,8 +83,8 @@ class CourseInfo {
             <option>4</option>
             <option>5</option>
         </select>
-        // <button class="rate-btn">Rate</button>
-        // <button class="add-comment-btn">Add Comment</button>
+        <button class="rate-btn">Rate</button>
+        <button class="add-comment-btn">Add Comment</button
         `
     }
 }
