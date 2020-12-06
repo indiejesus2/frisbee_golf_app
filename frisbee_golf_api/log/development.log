@@ -4079,3 +4079,394 @@ Processing by Api::V1::CoursesController#index as */*
 Completed 200 OK in 219ms (Views: 205.6ms | ActiveRecord: 12.1ms | Allocations: 4381)
 
 
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 15:53:49 -0500
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.2ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (3.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.1ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 141ms (Views: 94.6ms | ActiveRecord: 11.9ms | Allocations: 17262)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-06 15:53:55 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:13:in `update'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:15:in `update'
+  [1m[36mApi::V1::Course Update (2.6ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 1], ["votes", 5], ["updated_at", "2020-12-06 20:53:55.452359"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:15:in `update'
+  [1m[35m (19.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:15:in `update'
+Completed 200 OK in 36ms (Views: 0.7ms | ActiveRecord: 22.9ms | Allocations: 3567)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 15:54:18 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 26ms (Views: 22.5ms | ActiveRecord: 3.0ms | Allocations: 4396)
+
+
+Started PATCH "/api/v1/courses/1" for ::1 at 2020-12-06 15:54:23 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>4, "id"=>"1", "course"=>{}}
+  [1m[36mApi::V1::Course Load (0.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:13:in `update'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:15:in `update'
+  [1m[36mApi::V1::Course Update (2.2ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 2], ["votes", 9], ["updated_at", "2020-12-06 20:54:23.250943"], ["id", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:15:in `update'
+  [1m[35m (34.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:15:in `update'
+Completed 200 OK in 65ms (Views: 0.5ms | ActiveRecord: 37.0ms | Allocations: 3968)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 15:58:24 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 140ms (Views: 106.9ms | ActiveRecord: 15.6ms | Allocations: 15917)
+
+
+Started PATCH "/api/v1/courses/2" for ::1 at 2020-12-06 15:59:25 -0500
+Processing by Api::V1::CoursesController#update as JSON
+  Parameters: {"vote"=>5, "id"=>"2", "course"=>{}}
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/courses_controller.rb:13:in `update'
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:15:in `update'
+  [1m[36mApi::V1::Course Update (2.7ms)[0m  [1m[33mUPDATE "api_v1_courses" SET "tally" = ?, "votes" = ?, "updated_at" = ? WHERE "api_v1_courses"."id" = ?[0m  [["tally", 1], ["votes", 5], ["updated_at", "2020-12-06 20:59:25.681812"], ["id", 2]]
+  ↳ app/controllers/api/v1/courses_controller.rb:15:in `update'
+  [1m[35m (23.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:15:in `update'
+Completed 200 OK in 49ms (Views: 0.9ms | ActiveRecord: 27.2ms | Allocations: 3349)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:02:01 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 41ms (Views: 36.1ms | ActiveRecord: 2.7ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:03:50 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (34.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 54ms (Views: 15.4ms | ActiveRecord: 37.0ms | Allocations: 4379)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:04:12 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (1.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.2ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 45ms (Views: 38.8ms | ActiveRecord: 5.3ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:08:57 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (7.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 32ms (Views: 21.1ms | ActiveRecord: 9.0ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:09:45 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 36ms (Views: 32.2ms | ActiveRecord: 3.7ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:10:49 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.9ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 82ms (Views: 77.8ms | ActiveRecord: 3.2ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:12:50 -0500
+Processing by Api::V1::CoursesController#index as HTML
+  [1m[36mApi::V1::Course Load (0.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 18ms (Views: 15.0ms | ActiveRecord: 2.2ms | Allocations: 4376)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:12:53 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 30ms (Views: 26.4ms | ActiveRecord: 3.3ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:13:21 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.1ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 40ms (Views: 36.0ms | ActiveRecord: 3.6ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:35:20 -0500
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (1.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.2ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 117ms (Views: 102.5ms | ActiveRecord: 7.1ms | Allocations: 4421)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:36:52 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.1ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 87ms (Views: 82.6ms | ActiveRecord: 3.6ms | Allocations: 4379)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:36:55 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.2ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 368ms (Views: 363.4ms | ActiveRecord: 3.8ms | Allocations: 4382)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:37:37 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.2ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 29ms (Views: 22.8ms | ActiveRecord: 3.8ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:37:47 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (3.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 61ms (Views: 52.8ms | ActiveRecord: 5.8ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:39:45 -0500
+Processing by Api::V1::CoursesController#index as HTML
+  [1m[36mApi::V1::Course Load (0.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (2.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 48ms (Views: 41.6ms | ActiveRecord: 5.5ms | Allocations: 4382)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:39:47 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 20ms (Views: 16.6ms | ActiveRecord: 3.1ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:40:26 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (1.1ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 27ms (Views: 22.2ms | ActiveRecord: 3.2ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:41:07 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 35ms (Views: 30.4ms | ActiveRecord: 3.9ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:42:09 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (3.0ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 62ms (Views: 53.6ms | ActiveRecord: 6.4ms | Allocations: 4378)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-06 16:42:46 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.9ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:6:in `index'
+  [1m[36mApi::V1::Comment Load (1.1ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (5.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 34ms (Views: 25.3ms | ActiveRecord: 8.2ms | Allocations: 4378)
+
+
