@@ -24,15 +24,32 @@ class CourseInfo {
         if (e.target.className == "rate-btn") {
             if (e.target.previousElementSibling.value >= 1) {
                 const id = this.card.dataset.id;
-                let vote = (parseInt(e.target.previousElementSibling.value))
-                api.updateRating(id, vote).then((course) => this.updatedRating(course.tally, course.votes))
+                let vote = (parseInt(e.target.previousElementSibling.value));
+                api.updateRating(id, vote).then((course) => this.updatedRating(course.tally, course.votes));
             }
+        } else if (e.target.className == "comment-btn") {
+            const id = this.card.dataset.id;
+            let username = (e.target.previousElementSibling.value)
+            let comment = (e.target.previousElementSibling.previousElementSibling.value)
+            api.addComment(id, comment, username).then((comments) => this.addComment(comments));
         }
+    }
+
+    addComment = (comments) => {
+        let comment = comments.pop()
+        let id = comment.api_v1_course_id
+        let card = document.querySelector(`[data-id="${id}"]`)
+        let ul = card.children[6]
+        let li = document.createElement("li")
+        li.innerText = `"${comment.review}" - ${comment.username}`
+        // debugger
+        ul.append(li)
+        // let card = getElementById
     }
 
     calculateRating = (tally, votes) => {
         let rating = 0
-        if (tally == 0 && votes == 0) {
+        if (!tally && !votes) {
             return rating
             // return rating
         } else {
@@ -43,7 +60,7 @@ class CourseInfo {
 
     updatedRating = (tally, votes) => {
         const rating = (votes/tally)
-        this.card.children[1].innerHTML = `${rating} Frisbees`;
+        this.card.children[2].innerHTML = `${rating} Frisbees`;
     }
     
     renderCourse() {
@@ -57,17 +74,24 @@ class CourseInfo {
     }
 
     renderComments() {
-        const comments = this.course.attributes.comments.map(comment => comment)
-        var ul = document.createElement('ul')
-        comments.forEach(comment => {
-            var li = document.createElement('li')
-            li.innerText = `"${comment.review}" - ${comment.username}`
-            ul.appendChild(li)
-        }) 
-        this.card.append(ul)
+            const comments = this.course.attributes.comments.map(comment => comment)
+            var ul = document.createElement('ul')
+            comments.forEach(comment => {
+                var li = document.createElement('li')
+                li.innerText = `"${comment.review}" - ${comment.username}`
+                ul.appendChild(li)
+            })
+            const commentBox = document.createElement("textarea")
+            const usernameBox = document.createElement("input")
+            const commentBtn = document.createElement("button")
+            commentBtn.className = "comment-btn"
+            commentBtn.innerText = "Add Comment"
+            this.card.append(ul, commentBox, usernameBox)
+            this.card.append(commentBtn)
     }
 
-    renderInnerHTML() {
+    renderInnerHTML = () => {
+        debugger
         const { name, city, state, holes, votes, tally } = this.course.attributes;
         this.card.innerHTML = `
         <h2>${name}</h2> 
@@ -83,8 +107,7 @@ class CourseInfo {
             <option>4</option>
             <option>5</option>
         </select>
-        <button class="rate-btn">Rate</button>
-        <button class="add-comment-btn">Add Comment</button
+        <button class="rate-btn">Rate</button>        
         `
     }
 }

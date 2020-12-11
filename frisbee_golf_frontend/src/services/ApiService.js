@@ -21,4 +21,35 @@ class ApiService {
         .then((res) => res.json());
     }
 
+    addComment = (id, username, review) => {
+        const data = {
+            username: username,
+            review: review
+
+        }
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
+        };
+        return fetch(`${this.baseURL}courses/${id}/comments`, configObj)
+        .then((res) => res.json());
+    }
+
+    createCourse = (data) => {
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
+        };
+        return fetch(`${this.baseURL}courses`, configObj)
+        .then((res) => res.json());
+    }
+
 }

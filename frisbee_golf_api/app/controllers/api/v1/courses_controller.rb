@@ -6,7 +6,11 @@ class Api::V1::CoursesController < ApplicationController
         render json: CourseSerializer.new(courses)
     end
 
-    def show
+    def create
+        course = Api::V1::Course.create(course_params)
+        course.tally = 0
+        course.votes = 0
+        render json: CourseSerializer.new(course)
     end
 
     def update
@@ -14,6 +18,12 @@ class Api::V1::CoursesController < ApplicationController
         # debugger
         @course.update(tally: @course.tally + 1, votes: @course.votes += params[:vote])
         render json: @course, except: [:created_at, :updated_at]
+    end
+
+    private
+
+    def course_params
+        params.require(:course).permit(:name, :city, :state, :holes)
     end
 
 end
