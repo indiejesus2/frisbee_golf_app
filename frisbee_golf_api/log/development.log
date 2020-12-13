@@ -7330,3 +7330,330 @@ Processing by Api::V1::CommentsController#create as JSON
 Completed 200 OK in 3780ms (Views: 4.6ms | ActiveRecord: 17.0ms | Allocations: 14244)
 
 
+Started GET "/api/v1/courses" for ::1 at 2020-12-13 00:30:01 -0500
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.8ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+  [1m[36mApi::V1::Comment Load (1.1ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 5]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 6]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 95ms (Views: 67.1ms | ActiveRecord: 9.6ms | Allocations: 18867)
+
+
+Started POST "/api/v1/courses/1/comments" for ::1 at 2020-12-13 00:30:32 -0500
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>1, "username"=>"yes", "review"=>"hello", "course_id"=>"1", "comment"=>{"id"=>1, "username"=>"yes", "review"=>"hello"}}
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:9:in `create'
+  [1m[36mApi::V1::Course Load (0.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:9:in `create'
+  [1m[36mApi::V1::Comment Create (2.0ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "yes"], ["review", "hello"], ["api_v1_course_id", 1], ["created_at", "2020-12-13 05:30:44.468021"], ["updated_at", "2020-12-13 05:30:44.468021"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:9:in `create'
+Started POST "/api/v1/courses/1/comments" for ::1 at 2020-12-13 00:30:44 -0500
+  [1m[35m (15.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:9:in `create'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:11:in `create'
+Completed 200 OK in 12091ms (Views: 3.5ms | ActiveRecord: 19.0ms | Allocations: 49747)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>1, "username"=>"yes", "review"=>"hello", "course_id"=>"1", "comment"=>{"id"=>1, "username"=>"yes", "review"=>"hello"}}
+  [1m[36mApi::V1::Course Load (1.0ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:9:in `create'
+  [1m[36mApi::V1::Course Load (0.6ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:9:in `create'
+  [1m[36mApi::V1::Comment Create (1.6ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "yes"], ["review", "hello"], ["api_v1_course_id", 1], ["created_at", "2020-12-13 05:31:02.154955"], ["updated_at", "2020-12-13 05:31:02.154955"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:9:in `create'
+  [1m[35m (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:9:in `create'
+  [1m[36mApi::V1::Comment Load (0.9ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:11:in `create'
+Started GET "/api/v1/courses" for ::1 at 2020-12-13 00:31:02 -0500
+Completed 200 OK in 17632ms (Views: 6.4ms | ActiveRecord: 13.6ms | Allocations: 13381)
+
+
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 5]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 6]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 22ms (Views: 18.2ms | ActiveRecord: 3.9ms | Allocations: 8898)
+
+
+Started POST "/api/v1/courses/2/comments" for ::1 at 2020-12-13 00:31:40 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>2, "username"=>"maybe", "review"=>"right", "course_id"=>"2", "comment"=>{"id"=>2, "username"=>"maybe", "review"=>"right"}}
+  [1m[36mApi::V1::Course Load (0.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Course Load (0.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Create (1.7ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "maybe"], ["review", "right"], ["api_v1_course_id", 2], ["created_at", "2020-12-13 05:31:40.258635"], ["updated_at", "2020-12-13 05:31:40.258635"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/controllers/api/v1/comments_controller.rb:10:in `create'
+Completed 200 OK in 69ms (Views: 3.6ms | ActiveRecord: 22.9ms | Allocations: 17469)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-13 00:33:21 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (3.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 5]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 6]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 58ms (Views: 49.2ms | ActiveRecord: 6.7ms | Allocations: 6681)
+
+
+Started POST "/api/v1/courses/1/comments" for ::1 at 2020-12-13 00:33:29 -0500
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>1, "username"=>"huh", "review"=>"much better", "course_id"=>"1", "comment"=>{"id"=>1, "username"=>"huh", "review"=>"much better"}}
+  [1m[36mApi::V1::Course Load (0.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Course Load (0.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Create (1.8ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "huh"], ["review", "much better"], ["api_v1_course_id", 1], ["created_at", "2020-12-13 05:33:29.783547"], ["updated_at", "2020-12-13 05:33:29.783547"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[35m (17.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:10:in `create'
+Completed 200 OK in 35ms (Views: 3.7ms | ActiveRecord: 20.6ms | Allocations: 6990)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-13 00:33:48 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 5]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (2.2ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 6]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 43ms (Views: 36.6ms | ActiveRecord: 5.9ms | Allocations: 6587)
+
+
+Started POST "/api/v1/courses/3/comments" for ::1 at 2020-12-13 00:33:56 -0500
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>3, "username"=>"lets go", "review"=>"you can do it", "course_id"=>"3", "comment"=>{"id"=>3, "username"=>"lets go", "review"=>"you can do it"}}
+  [1m[36mApi::V1::Course Load (0.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Course Load (0.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Create (1.7ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "lets go"], ["review", "you can do it"], ["api_v1_course_id", 3], ["created_at", "2020-12-13 05:33:56.949731"], ["updated_at", "2020-12-13 05:33:56.949731"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[35m (11.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/controllers/api/v1/comments_controller.rb:10:in `create'
+Completed 200 OK in 28ms (Views: 3.7ms | ActiveRecord: 15.0ms | Allocations: 5680)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-13 00:34:10 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (1.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+  [1m[36mApi::V1::Comment Load (5.3ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 5]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 6]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 52ms (Views: 41.2ms | ActiveRecord: 9.8ms | Allocations: 6735)
+
+
+Started POST "/api/v1/courses/3/comments" for ::1 at 2020-12-13 00:34:48 -0500
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>3, "username"=>"yep", "review"=>"ah piss", "course_id"=>"3", "comment"=>{"id"=>3, "username"=>"yep", "review"=>"ah piss"}}
+  [1m[36mApi::V1::Course Load (0.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Course Load (3.9ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Create (6.6ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "yep"], ["review", "ah piss"], ["api_v1_course_id", 3], ["created_at", "2020-12-13 05:34:48.343991"], ["updated_at", "2020-12-13 05:34:48.343991"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[35m (14.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/controllers/api/v1/comments_controller.rb:10:in `create'
+Completed 200 OK in 54ms (Views: 4.0ms | ActiveRecord: 26.4ms | Allocations: 5790)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-13 00:35:34 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (1.1ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 5]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 6]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 44ms (Views: 38.9ms | ActiveRecord: 4.7ms | Allocations: 6883)
+
+
+Started POST "/api/v1/courses/1/comments" for ::1 at 2020-12-13 00:35:52 -0500
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>1, "username"=>"a", "review"=>"k", "course_id"=>"1", "comment"=>{"id"=>1, "username"=>"a", "review"=>"k"}}
+  [1m[36mApi::V1::Course Load (0.3ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Course Load (0.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Create (1.7ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "a"], ["review", "k"], ["api_v1_course_id", 1], ["created_at", "2020-12-13 05:35:52.676082"], ["updated_at", "2020-12-13 05:35:52.676082"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[35m (16.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Load (1.1ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:10:in `create'
+Completed 200 OK in 49ms (Views: 18.3ms | ActiveRecord: 19.6ms | Allocations: 7106)
+
+
+Started POST "/api/v1/courses/1/comments" for ::1 at 2020-12-13 00:36:43 -0500
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>1, "username"=>"a", "review"=>"k", "course_id"=>"1", "comment"=>{"id"=>1, "username"=>"a", "review"=>"k"}}
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Course Load (1.2ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Create (2.8ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "a"], ["review", "k"], ["api_v1_course_id", 1], ["created_at", "2020-12-13 05:36:43.471677"], ["updated_at", "2020-12-13 05:36:43.471677"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[35m (16.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:10:in `create'
+Completed 200 OK in 52ms (Views: 4.4ms | ActiveRecord: 21.8ms | Allocations: 8356)
+
+
+Started GET "/api/v1/courses" for ::1 at 2020-12-13 00:37:10 -0500
+Processing by Api::V1::CoursesController#index as */*
+  [1m[36mApi::V1::Course Load (0.5ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses"[0m
+  ↳ app/controllers/api/v1/courses_controller.rb:5:in `index'
+  [1m[36mApi::V1::Comment Load (0.7ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 1]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 2]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.8ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 3]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.4ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 4]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (2.9ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 5]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 6]]
+  ↳ app/serializers/course_serializer.rb:7:in `block in <class:CourseSerializer>'
+Completed 200 OK in 53ms (Views: 34.5ms | ActiveRecord: 6.2ms | Allocations: 7179)
+
+
+Started POST "/api/v1/courses/5/comments" for ::1 at 2020-12-13 00:37:27 -0500
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>5, "username"=>"i hope so!", "review"=>"it works?", "course_id"=>"5", "comment"=>{"id"=>5, "username"=>"i hope so!", "review"=>"it works?"}}
+  [1m[36mApi::V1::Course Load (0.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Course Load (0.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Create (1.5ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "i hope so!"], ["review", "it works?"], ["api_v1_course_id", 5], ["created_at", "2020-12-13 05:37:27.405219"], ["updated_at", "2020-12-13 05:37:27.405219"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[35m (11.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Load (0.5ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 5]]
+  ↳ app/controllers/api/v1/comments_controller.rb:10:in `create'
+Completed 200 OK in 29ms (Views: 3.8ms | ActiveRecord: 14.7ms | Allocations: 6570)
+
+
+Started POST "/api/v1/courses/5/comments" for ::1 at 2020-12-13 00:37:35 -0500
+Processing by Api::V1::CommentsController#create as JSON
+  Parameters: {"id"=>5, "username"=>"yay!", "review"=>"there we go", "course_id"=>"5", "comment"=>{"id"=>5, "username"=>"yay!", "review"=>"there we go"}}
+  [1m[36mApi::V1::Course Load (0.4ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:7:in `create'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Course Load (1.7ms)[0m  [1m[34mSELECT "api_v1_courses".* FROM "api_v1_courses" WHERE "api_v1_courses"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Create (1.6ms)[0m  [1m[32mINSERT INTO "api_v1_comments" ("username", "review", "api_v1_course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "yay!"], ["review", "there we go"], ["api_v1_course_id", 5], ["created_at", "2020-12-13 05:37:35.440937"], ["updated_at", "2020-12-13 05:37:35.440937"]]
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[35m (13.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/comments_controller.rb:8:in `create'
+  [1m[36mApi::V1::Comment Load (0.6ms)[0m  [1m[34mSELECT "api_v1_comments".* FROM "api_v1_comments" WHERE "api_v1_comments"."api_v1_course_id" = ?[0m  [["api_v1_course_id", 5]]
+  ↳ app/controllers/api/v1/comments_controller.rb:10:in `create'
+Completed 200 OK in 38ms (Views: 2.6ms | ActiveRecord: 17.8ms | Allocations: 6672)
+
+
