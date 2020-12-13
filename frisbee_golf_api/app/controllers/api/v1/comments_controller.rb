@@ -5,6 +5,7 @@ class Api::V1::CommentsController < ApplicationController
 
     def create
         @course = Api::V1::Course.find_by_id(params[:course_id])
+        debugger
         @course.comments.create(comment_params)
         @comments = @course.comments
         render json: @comments, except: [:created_at, :updated_at]
