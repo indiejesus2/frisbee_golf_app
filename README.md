@@ -12,8 +12,8 @@ In order to start up the backend, make sure the terminal is in the correct direc
 
 ## Contributing
 
-Pull requests are encouraged on GitHub as well as any bug reports. This project is intended to be a safe, welcoming space for colloration, and contributors are expected to adhere to the Contributor Covenant Code of Conduct.
+Pull requests are encouraged on [GitHub](https://github.com/indiejesus2/frisbee_golf_app) as well as any bug reports. This project is intended to be a safe, welcoming space for colloration, and contributors are expected to adhere to the Contributor Covenant Code of Conduct.
 
 ## License
 
-This gem is an open source under the terms of the MIT License.
+This gem is an open source under the terms of the [MIT License](https://github.com/indiejesus2/FlyerApp/blob/master/LICENSE).
