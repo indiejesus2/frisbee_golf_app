@@ -4,19 +4,18 @@ class CourseInfo {
     constructor(course) {
         this.course = course
         this.renderCourse()
-        this.attachEventListener()
+        this.attachClickEventListener()
+        this.attachSubmitEventListener()
     }
 
     static getAll() {
         api.getAllCourses().then((data) => {
             let newdata = data.data
             newdata.forEach(course => new CourseInfo(course))
-        }
-            
-        );
+        });
     }
 
-    attachEventListener() {
+    attachClickEventListener() {
         this.card.addEventListener("click", this.handleOnClick);
     }
 
@@ -27,12 +26,24 @@ class CourseInfo {
                 let vote = (parseInt(e.target.previousElementSibling.value));
                 api.updateRating(id, vote).then((course) => this.updatedRating(course.tally, course.votes));
             }
-        } else if (e.target.className == "comment-btn") {
-            const id = this.card.dataset.id;
-            let username = (e.target.previousElementSibling.value)
-            let comment = (e.target.previousElementSibling.previousElementSibling.value)
-            api.addComment(id, comment, username).then((comments) => this.addComment(comments));
         }
+    }
+
+    attachSubmitEventListener() {
+        this.card.addEventListener("submit", this.handleOnSubmit);
+    }
+
+    handleOnSubmit = (e) => {
+        e.preventDefault();
+        const { review, username } = e.target
+        const data = {
+            id: Number(this.card.dataset.id),
+            username: username.value,
+            review: review.value
+        }
+        username.value = ""
+        review.value = ""
+        api.addComment(data).then((comments) => this.addComment(comments));
     }
 
     addComment = (comments) => {
@@ -42,24 +53,21 @@ class CourseInfo {
         let ul = card.children[6]
         let li = document.createElement("li")
         li.innerText = `"${comment.review}" - ${comment.username}`
-        // debugger
         ul.append(li)
-        // let card = getElementById
     }
 
     calculateRating = (tally, votes) => {
         let rating = 0
         if (!tally && !votes) {
             return rating
-            // return rating
         } else {
             let rating = (votes/tally)
-            return rating
+            return rating.toFixed(2)
         }
     }
 
     updatedRating = (tally, votes) => {
-        const rating = (votes/tally)
+        const rating = this.calculateRating(tally, votes)
         this.card.children[2].innerHTML = `${rating} Frisbees`;
     }
     
@@ -74,24 +82,44 @@ class CourseInfo {
     }
 
     renderComments() {
-            const comments = this.course.attributes.comments.map(comment => comment)
-            var ul = document.createElement('ul')
-            comments.forEach(comment => {
-                var li = document.createElement('li')
-                li.innerText = `"${comment.review}" - ${comment.username}`
-                ul.appendChild(li)
-            })
-            const commentBox = document.createElement("textarea")
-            const usernameBox = document.createElement("input")
-            const commentBtn = document.createElement("button")
-            commentBtn.className = "comment-btn"
-            commentBtn.innerText = "Add Comment"
-            this.card.append(ul, commentBox, usernameBox)
-            this.card.append(commentBtn)
+        const comments = this.course.attributes.comments.map(comment => comment)
+        var ul = document.createElement('ul')
+        comments.forEach(comment => {
+            var li = document.createElement('li')
+            li.innerText = `"${comment.review}" - ${comment.username}`
+            ul.appendChild(li)
+        })
+        this.card.append(ul)
+        const form = document.createElement("form");
+        form.innerHTML = this.renderCommentHTML();
+        this.form = form;
+        this.card.append(form);
+    }
+
+    renderCommentHTML = () => {
+        return `
+            <input
+            text="text"
+            name="review"
+            value=""
+            placeholder="Add a comment..."
+            />
+            <br/>
+            <input
+            text="text"
+            name="username"
+            value=""
+            placeholder="Username"
+            <br/>
+            <input
+            type="submit"
+            name="submit"
+            value="Add a comment"
+            />
+        `
     }
 
     renderInnerHTML = () => {
-        debugger
         const { name, city, state, holes, votes, tally } = this.course.attributes;
         this.card.innerHTML = `
         <h2>${name}</h2> 

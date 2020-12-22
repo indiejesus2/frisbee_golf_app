@@ -73,9 +73,6 @@ class CourseForm {
             value="Create New Course"
             class="submit"
           />
-        </form>
-      </div>
-
         `;
     };
 }

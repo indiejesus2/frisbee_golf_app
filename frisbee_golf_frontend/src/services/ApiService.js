@@ -21,12 +21,8 @@ class ApiService {
         .then((res) => res.json());
     }
 
-    addComment = (id, username, review) => {
-        const data = {
-            username: username,
-            review: review
-
-        }
+    addComment = (data) => {
+        debugger
         const configObj = {
             method: "POST",
             headers: {
@@ -35,7 +31,7 @@ class ApiService {
             },
             body: JSON.stringify(data)
         };
-        return fetch(`${this.baseURL}courses/${id}/comments`, configObj)
+        return fetch(`${this.baseURL}courses/${data.id}/comments`, configObj)
         .then((res) => res.json());
     }
 
