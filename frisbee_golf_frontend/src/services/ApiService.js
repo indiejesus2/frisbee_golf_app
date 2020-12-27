@@ -22,7 +22,6 @@ class ApiService {
     }
 
     addComment = (data) => {
-        debugger
         const configObj = {
             method: "POST",
             headers: {

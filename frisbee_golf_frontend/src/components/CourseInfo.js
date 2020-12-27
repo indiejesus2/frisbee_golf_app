@@ -15,6 +15,8 @@ class CourseInfo {
         });
     }
 
+
+
     attachClickEventListener() {
         this.card.addEventListener("click", this.handleOnClick);
     }
