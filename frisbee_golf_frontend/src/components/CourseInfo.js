@@ -124,20 +124,24 @@ class CourseInfo {
     renderInnerHTML = () => {
         const { name, city, state, holes, votes, tally } = this.course.attributes;
         this.card.innerHTML = `
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
         <h2>${name}</h2> 
         <h4>${city}, ${state}</h4>
         ${holes} Holes (Baskets)
         <h5>${this.calculateRating(tally, votes)} Frisbees</h5>
         <label for="rating">Rate This Course</label>
         <select>
-            <option disabled selected value>--</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+        <option disabled selected value>--</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
         </select>
         <button class="rate-btn">Rate</button>        
+        </div>
+        </div>
         `
     }
 }
