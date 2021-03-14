@@ -1,10 +1,19 @@
+body {
+  background-color: cornflowerblue;
+}
+
+.container-fluid {
+  margin-bottom: auto;
+}
+
 .card {
-    text-align: center;
-    border: grey solid 1px;
+  background-color: rgb(140, 232, 240);
+  text-align: center;
+  border: grey solid 1px;
     padding: 1rem;
-    /* width: 15rem; */
-    /* height: 25rem; */
+    width: 18rem; 
+    height: 30rem;
     display: inline-grid;
     margin: 1rem 2rem;
-    box-shadow: 3px 4px #e04b52
+    box-shadow: 3px 4px #b14be0
   }

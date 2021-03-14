@@ -86,6 +86,7 @@ class CourseInfo {
     renderComments() {
         const comments = this.course.attributes.comments.map(comment => comment)
         var ul = document.createElement('ul')
+        ul.className = "overflow-auto"
         comments.forEach(comment => {
             var li = document.createElement('li')
             li.innerText = `"${comment.review}" - ${comment.username}`
@@ -124,7 +125,6 @@ class CourseInfo {
     renderInnerHTML = () => {
         const { name, city, state, holes, votes, tally } = this.course.attributes;
         this.card.innerHTML = `
-        <div class="card" style="width: 18rem;">
         <div class="card-body">
         <h2>${name}</h2> 
         <h4>${city}, ${state}</h4>
