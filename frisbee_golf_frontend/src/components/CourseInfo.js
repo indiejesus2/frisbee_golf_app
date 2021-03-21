@@ -52,10 +52,14 @@ class CourseInfo {
         let comment = comments.pop()
         let id = comment.api_v1_course_id
         let card = document.querySelector(`[data-id="${id}"]`)
-        let ul = card.children[6]
+        if (card.getElementsByClassName("overflow-auto")) {
+            var ul = card.children[1]
+        } else {
+            var ul = document.createElement("ul")
+        }
         let li = document.createElement("li")
-        li.innerText = `"${comment.review}" - ${comment.username}`
-        ul.append(li)
+            li.innerText = `"${comment.review}" - ${comment.username}`
+            ul.append(li)
     }
 
     calculateRating = (tally, votes) => {
@@ -70,7 +74,7 @@ class CourseInfo {
 
     updatedRating = (tally, votes) => {
         const rating = this.calculateRating(tally, votes)
-        this.card.children[2].innerHTML = `${rating} Frisbees`;
+        this.card.children[0].children[2].innerHTML = `${rating} Frisbees`;
     }
     
     renderCourse() {
@@ -82,21 +86,29 @@ class CourseInfo {
         this.renderComments();
         this.constructor.container.append(card);
     }
-
+    
     renderComments() {
         const comments = this.course.attributes.comments.map(comment => comment)
-        var ul = document.createElement('ul')
-        ul.className = "overflow-auto"
+        if (comments.length > 0) {
+
+            var ul = document.createElement('ul')
+            ul.className = "overflow-auto"
         comments.forEach(comment => {
             var li = document.createElement('li')
             li.innerText = `"${comment.review}" - ${comment.username}`
             ul.appendChild(li)
         })
-        this.card.append(ul)
+            this.card.append(ul)
+        } else {
+            var p = document.createElement('p')
+            p.innerHTML = "<strong>Make the first comment!</strong>"
+            this.card.append(p)
+        }
         const form = document.createElement("form");
         form.innerHTML = this.renderCommentHTML();
         this.form = form;
         this.card.append(form);
+
     }
 
     renderCommentHTML = () => {
@@ -126,7 +138,7 @@ class CourseInfo {
         const { name, city, state, holes, votes, tally } = this.course.attributes;
         this.card.innerHTML = `
         <div class="card-body">
-        <h2>${name}</h2> 
+        <h2 class="title">${name}</h2> 
         <h4>${city}, ${state}</h4>
         ${holes} Holes (Baskets)
         <h5>${this.calculateRating(tally, votes)} Frisbees</h5>
