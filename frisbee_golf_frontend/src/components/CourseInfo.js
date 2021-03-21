@@ -48,18 +48,23 @@ class CourseInfo {
         api.addComment(data).then((comments) => this.addComment(comments));
     }
 
+    removeDefault = (card) => {
+
+    }
+
     addComment = (comments) => {
         let comment = comments.pop()
         let id = comment.api_v1_course_id
         let card = document.querySelector(`[data-id="${id}"]`)
-        if (card.getElementsByClassName("overflow-auto")) {
-            var ul = card.children[1]
-        } else {
-            var ul = document.createElement("ul")
+        let p = card.getElementsByClassName("default")
+        if (p.length > 0) {
+            p.item("p").remove()
         }
+        let ul = card.children[1]
         let li = document.createElement("li")
-            li.innerText = `"${comment.review}" - ${comment.username}`
-            ul.append(li)
+        li.innerText = `"${comment.review}" - ${comment.username}`
+        ul.append(li)
+
     }
 
     calculateRating = (tally, votes) => {
@@ -89,18 +94,18 @@ class CourseInfo {
     
     renderComments() {
         const comments = this.course.attributes.comments.map(comment => comment)
+        var ul = document.createElement('ul')
+        ul.className = "overflow-auto"
+        this.card.append(ul)
         if (comments.length > 0) {
-
-            var ul = document.createElement('ul')
-            ul.className = "overflow-auto"
-        comments.forEach(comment => {
+            comments.forEach(comment => {
             var li = document.createElement('li')
             li.innerText = `"${comment.review}" - ${comment.username}`
             ul.appendChild(li)
         })
-            this.card.append(ul)
         } else {
             var p = document.createElement('p')
+            p.className = "default"
             p.innerHTML = "<strong>Make the first comment!</strong>"
             this.card.append(p)
         }
