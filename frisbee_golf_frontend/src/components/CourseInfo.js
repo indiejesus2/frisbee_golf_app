@@ -12,6 +12,7 @@ class CourseInfo {
         api.getAllCourses().then((data) => {
             let newdata = data.data
             newdata.forEach(course => new CourseInfo(course))
+            const count = newdata.length
         });
     }
 

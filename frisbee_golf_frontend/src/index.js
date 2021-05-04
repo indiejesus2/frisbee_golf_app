@@ -5,4 +5,5 @@ document.addEventListener("DOMContentLoaded", () => {
     CourseInfo.getAll();
     new CourseForm();
     new CourseFilter();
+    new CoursePagination();
 })
