@@ -1,5 +1,6 @@
 class CourseInfo {
     static container = document.getElementById("golf-course-collection")
+    static heading = document.getElementById("golf-course-pagination")
 
     constructor(course) {
         this.course = course
@@ -7,16 +8,6 @@ class CourseInfo {
         this.attachClickEventListener()
         this.attachSubmitEventListener()
     }
-
-    static getAll() {
-        api.getAllCourses().then((data) => {
-            let newdata = data.data
-            newdata.forEach(course => new CourseInfo(course))
-            const count = newdata.length
-        });
-    }
-
-
 
     attachClickEventListener() {
         this.card.addEventListener("click", this.handleOnClick);
